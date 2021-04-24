@@ -23,14 +23,16 @@ public class ProxyConfig {
 //		ProxyClass.addRelateClassPath(LogAspect.class);
 //		//methodBody中需要的jar路径
 //		ProxyClass.addRelateClassPath(JSON.class);
-		
-		Map<String, List<MethodParam>> map = ProxyClass.getMethodList("properties/app.properties", "log.proxys.list");
-		ProxyClassLog.proxyMethodLog(map);
-		
+
 //		ProxyClassLog.proxyMethodLog("wang.ulane.proxy.BeanTest",
 //				new MethodParam("test"),
 //				new MethodParam("test", Integer.class, Integer.class, Integer.class)
 //				);
+		
+		ProxyClass.initClass("properties/app.properties", "log.proxys.initclass");
+		Map<String, List<MethodParam>> map = ProxyClass.getMethodList("properties/app.properties", "log.proxys.list");
+		ProxyClassLog.proxyMethodLog(map);
+		
 	}
 	
 }
