@@ -39,6 +39,7 @@ public class UnitTest {
 	public void testAop() throws Exception{
 		BeanTest.test();
 		BeanTest bt = new BeanTest();
+		bt.test(5);
 		bt.test(5,6,7);
 		System.out.println(123);
 	}
