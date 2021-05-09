@@ -5,12 +5,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
-import com.alibaba.fastjson.JSON;
-
-import wang.ulane.log.LogAspect;
 import wang.ulane.proxy.MethodParam;
 import wang.ulane.proxy.ProxyClass;
 import wang.ulane.proxy.ProxyClassLog;
+import wang.ulane.proxy.ProxyPoint;
 
 @Component
 public class ProxyConfig {
@@ -33,6 +31,17 @@ public class ProxyConfig {
 		Map<String, List<MethodParam>> map = ProxyClass.getMethodList("properties/app.properties", "log.proxys.list");
 		ProxyClassLog.proxyMethodLog(map);
 		
+	}
+
+	public static Object testProxy(ProxyPoint proxyPoint) throws Exception{
+		//before
+		System.out.println("before");
+		//proceed
+		Object result = proxyPoint.proceed();
+//		Object result = 0;
+		//after
+		System.out.println("after:"+result);
+		return result;
 	}
 	
 }
