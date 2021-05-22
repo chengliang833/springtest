@@ -27,8 +27,8 @@ public class ProxyConfig {
 //				new MethodParam("test", Integer.class, Integer.class, Integer.class)
 //				);
 		
-		ProxyClass.initClass("properties/app.properties", "log.proxys.initclass");
-		Map<String, List<MethodParam>> map = ProxyClass.getMethodList("properties/app.properties", "log.proxys.list");
+		ProxyClass.initClass("properties/app.properties", "logext.proxys.initclass");
+		Map<String, List<MethodParam>> map = ProxyClass.getMethodList("properties/app.properties", "logext.proxys.list");
 		ProxyClassLog.proxyMethodLog(map);
 		
 	}

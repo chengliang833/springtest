@@ -1,0 +1,5 @@
+<aspectj>
+    <aspects>
+        <aspect name="top.ulane.springtest.config.CustomAspect"/>
+    </aspects>
+</aspectj>

@@ -72,9 +72,9 @@
 	  	</dependency>
 		
 		<dependency>
-			<groupId>aspectj</groupId>
+			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
-			<version>1.5.4</version>
+			<version>1.9.6</version>
 		</dependency>
 		
 		<dependency>
@@ -130,14 +130,16 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
-			<plugin>
+			<!-- 默认7.0.47版本太旧，改为使用server模式7.0.108版本
+				** ClassLoader [org.apache.catalina.loader.WebappClassLoader] does NOT provide an 'addTransformer(ClassFileTransformer)' method. Specify a custom LoadTimeWeaver or start your Java virtual machine with Spring's agent: -javaagent:org.springframework.instrument.jar -->
+<!-- 			<plugin>
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
 					<path>/springtest</path>
 					<port>8081</port>
 				</configuration>
-			</plugin>
+			</plugin> -->
             <plugin>
                 <groupId>wang.ulane.gen</groupId>
                 <artifactId>mybatis-ulane-maven-plugin</artifactId>

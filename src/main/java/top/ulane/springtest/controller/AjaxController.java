@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import top.ulane.springtest.model.Mytable;
 import top.ulane.springtest.service.MytableService;
+import top.ulane.springtest.util.Utils;
 import top.ulane.springtest.vo.ResponseData;
 import wang.ulane.proxy.BeanTest;
 
@@ -17,6 +18,7 @@ public class AjaxController {
 	
 	@RequestMapping("/ajaxtest")
 	public String ajaxtest() {
+		System.out.println(new Utils().utilInvoke(1));
 		return "hello";
 	}
 	
