@@ -4,7 +4,7 @@
     <property name="appname" value="springtest"/>
     <!-- <springProperty scope="context" name="LOG_PATH" source="logback.path"/> -->
     <property name="LOG_PATH" value="./logs"/>
-    <property name="CHARSET" value="UTF-8"/>
+    <property name="CHARSET" value="GBK"/>
     
     <!-- 日志记录器，日期滚动记录 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">

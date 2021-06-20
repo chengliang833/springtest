@@ -3,6 +3,8 @@ package top.ulane.springtest.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import top.ulane.springtest.vo.ResponseData;
+
 @Controller
 public class HelloController {
 	
@@ -17,6 +19,11 @@ public class HelloController {
 		String str = "abcd";
 		str.charAt(10);
 		return "hello";
+	}
+	
+	@RequestMapping("/hello3")
+	public ResponseData hello3() {
+		return new ResponseData<>();
 	}
 
 }

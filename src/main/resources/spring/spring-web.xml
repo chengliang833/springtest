@@ -48,8 +48,48 @@
 	</bean>
 	-->
 	
+	<!-- 如果不配置，jackson会有一个默认的messageconverter -->
+	<bean id="objectMapper" class="com.fasterxml.jackson.databind.ObjectMapper">
+	    <!-- 处理responseBody 里面日期类型,可能线程不安全，后期研究 -->
+	    <!-- <property name="dateFormat">
+	        <bean class="java.text.SimpleDateFormat">
+	            <constructor-arg type="java.lang.String" value="yyyy-MM-dd HH:mm:ss" />
+	        </bean>
+	    </property> -->
+	    <!-- 为null字段时不显示 -->
+	    <!-- <property name="serializationInclusion">
+	        <value type="com.fasterxml.jackson.annotation.JsonInclude.Include">NON_NULL</value>
+	    </property> -->
+	</bean>
+	<bean id="jacksonObjectMapperConfigure" class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="objectMapper" />
+        <property name="targetMethod" value="configure" />
+        <property name="arguments">
+            <list>
+                <value type="com.fasterxml.jackson.databind.MapperFeature">USE_STD_BEAN_NAMING</value>
+                <!-- 返回json的key是否保留原大写KEY->key -->
+                <value>false</value>
+            </list>
+        </property>
+    </bean>
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper" ref="objectMapper" />
+			</bean>
+    		<!-- <bean id="fastJsonConverter" factory-bean="fastJsonMvcConfigFactory" factory-method="fastJsonHttpMessageConverters" /> -->
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	
-	
+	<mvc:interceptors>  
+	    <!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 -->  
+	    <!-- <bean class="top.ulane.springtest.interceptor.MyInterceptor"/> -->  
+	    <mvc:interceptor>  
+	        <mvc:mapping path="/commonBeanProxy"/>  
+	        <!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 -->  
+	        <bean class="top.ulane.springtest.interceptor.MyInterceptor"/>  
+	    </mvc:interceptor>  
+	</mvc:interceptors>  
 	
 	
 </beans>
