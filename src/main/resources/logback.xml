@@ -4,7 +4,7 @@
     <property name="appname" value="springtest"/>
     <!-- <springProperty scope="context" name="LOG_PATH" source="logback.path"/> -->
     <property name="LOG_PATH" value="./logs"/>
-    <property name="CHARSET" value="GBK"/>
+    <property name="CHARSET" value="UTF-8"/>
     
     <!-- 日志记录器，日期滚动记录 -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -26,7 +26,7 @@
         <append>true</append>
         <!-- 日志文件的格式 -->
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%F:%L] - %msg%n</pattern>
             <charset>${CHARSET}</charset>
         </encoder>
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -37,7 +37,7 @@
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <!--encoder 默认配置为PatternLayoutEncoder-->
         <encoder>
-        	<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level %logger Line:%-3L - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%F:%L] - %msg%n</pattern>
             <!-- <pattern>%msg%n</pattern> -->
             <charset>${CHARSET}</charset>
         </encoder>
@@ -69,7 +69,7 @@
         <!--日志输出编码格式化-->
         <encoder>
             <charset>${CHARSET}</charset>
-            <pattern>%d %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%F:%L] - %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -95,7 +95,7 @@
         <!--日志输出编码格式化-->
         <encoder>
             <charset>${CHARSET}</charset>
-            <pattern>%d %-5level %logger{36} - %msg%n</pattern>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%F:%L] - %msg%n</pattern>
         </encoder>
     </appender>
 	

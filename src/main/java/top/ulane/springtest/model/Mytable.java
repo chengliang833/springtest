@@ -2,10 +2,14 @@ package top.ulane.springtest.model;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.NumberFormat;
+import org.springframework.format.annotation.NumberFormat.Style;
+
 public class Mytable {
     /**
      * 
      */
+	@NumberFormat(pattern="##.##",style=Style.PERCENT)
     private Integer id;
 
     /**
@@ -27,6 +31,7 @@ public class Mytable {
      * 
      * @return id 
      */
+	@NumberFormat(pattern="##.##",style=Style.PERCENT)
     public Integer getId() {
         return id;
     }

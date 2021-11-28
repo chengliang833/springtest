@@ -2,6 +2,7 @@ package top.ulane.springtest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
@@ -12,12 +13,15 @@ import top.ulane.springtest.service.MytableService;
 import top.ulane.springtest.util.Utils;
 import top.ulane.springtest.vo.ResponseData;
 import wang.ulane.proxy.BeanTest;
+import wang.ulane.util.HttpUtil;
 
 @RestController
 public class AjaxController {
 
 	@Autowired
 	private MytableService mytableService;
+	@Autowired
+	private HttpUtil httpUtil;
 
 	@RequestMapping("/ajaxtest")
 	public String ajaxtest() {
@@ -42,5 +46,15 @@ public class AjaxController {
 	public JSONObject commonBeanProxy2() {
 		return new ResponseData(new ResponseData<>()).toJSON();
 	}
+	
+	@RequestMapping("httpClientGetTest")
+	public ResponseData httpClientGetTest(@RequestParam("targetUrl") String targetUrl){
+		return new ResponseData<>(httpUtil.doGet(targetUrl));
+	}
 
+	@RequestMapping("httpClientPostTest")
+	public ResponseData httpClientPostTest(@RequestParam("targetUrl") String targetUrl){
+		return new ResponseData<>(httpUtil.doPost(targetUrl, "{}"));
+	}
+	
 }
