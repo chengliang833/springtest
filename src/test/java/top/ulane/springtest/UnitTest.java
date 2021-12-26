@@ -11,6 +11,7 @@ import com.alibaba.fastjson.JSON;
 
 import top.ulane.springtest.service.MytableService;
 import wang.ulane.proxy.BeanTest;
+import wang.ulane.util.HttpUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
@@ -29,10 +30,16 @@ public class UnitTest {
 	
 	@Autowired
 	private MytableService mytableService;
-	
 	@Test
 	public void testMytable(){
 		System.out.println(JSON.toJSONString(mytableService.selectByPrimaryKey(1)));
+	}
+
+	@Autowired
+	private HttpUtil httpUtil;
+	@Test
+	public void testPostProxy(){
+		System.out.println(httpUtil.doPost("https://www.baidu.com", "{}"));
 	}
 	
 	@Test
