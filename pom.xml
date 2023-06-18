@@ -5,14 +5,22 @@
   <version>0.0.1-SNAPSHOT</version>
   <packaging>war</packaging>
 
+	<repositories>
+		<repository>
+			<id>nexus_ulane</id>
+			<name>nexus_ulane</name>
+			<url>http://nexus.ulane.top/nexus/content/groups/public/</url>
+		</repository>
+	</repositories>
+	
 	<dependencies>
 		<!-- 测试时取消注释 -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>cn.ulane</groupId>
 			<artifactId>teststarter-logext-autoconfigure</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency> -->
 		
 		<dependency>
 			<groupId>cn.ulane</groupId>
@@ -25,7 +33,7 @@
             <groupId>org.apache.httpcomponents</groupId>
             <artifactId>httpclient</artifactId>
             <version>4.5.2</version>
-			<scope>provided</scope>
+			<!-- <scope>provided</scope> -->
             <exclusions>
                 <exclusion>
                     <groupId>commons-logging</groupId>
